@@ -25,7 +25,7 @@ export default function ArtworkCard({ artwork }) {
         />
         <div className="p-4">
           <h2 className="text-xl font-semibold">{artwork.title}</h2>
-          <p className="text-gray-600">{artwork.description}</p>
+          <p className="text-brand-beige-400">{artwork.description}</p>
         </div>
       </div>
 

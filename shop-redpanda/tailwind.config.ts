@@ -81,7 +81,7 @@ export default {
       addUtilities({
         '.cmn-line_motion--white': {
           'background-image': 'linear-gradient(to right, #fff 100%, transparent 0)',
-          'background-position': 'bottom left',
+          'background-position': 'center left',
           'background-repeat': 'no-repeat',
           // e.g. 2px high line 
           'background-size': '0 2px',

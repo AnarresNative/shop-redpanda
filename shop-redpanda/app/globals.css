@@ -20,3 +20,20 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.scrolling-background {
+  width: 100%;
+  height: 100vh;
+  background: url('/path/to/stitched-image.jpg') repeat-x;
+  background-size: cover; /* or contain, depending on your preference */
+  animation: scrollBackground 30s linear infinite;
+}
+
+@keyframes scrollBackground {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -1000px 0; /* shift horizontally to match the image width */
+  }
+}

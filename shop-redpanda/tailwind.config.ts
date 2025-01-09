@@ -8,6 +8,15 @@ export default {
   ],
   theme: {
     extend: {
+      keyframes: {
+        scrolling: {
+          '0%': { backgroundPosition: '% 0%' },
+          '100%': { backgroundPosition: '100% 0%' },
+        },
+      },
+      animation: {
+        scrolling: 'scrolling 50s linear infinite',
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
@@ -86,11 +95,17 @@ export default {
           // e.g. 2px high line 
           'background-size': '0 2px',
           'transition': 'background-size 0.25s cubic-bezier(0.165, 0.84, 0.44, 1)',
-          'font-size': 'calc(2vw + 1em)',
+          'font-size': 'calc(2vw + 3em)',
         },
         '.cmn-line_motion--white:hover': {
         'background-size': '100% 2px',
         },
+         '.singleLineContainer': {
+          'width': '200',        /* Set a width to constrain the text */
+          'white-space': 'nowrap', /* Prevent the text from wrapping to the next line */
+          'overflow': 'hidden',    /* Hide any text that overflows the width */
+          'text-overflow': 'ellipsis',/* Show ellipses (...) when text overflows */
+        }
       });
     },
   ],

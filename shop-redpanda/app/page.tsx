@@ -5,11 +5,25 @@ import Srfooter from "../components/footer";
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen font-[family-name:var(--font-geist-sans)]">
+    <main className="relative min-h-screen">
+      {/* Scrolling background container */}
+      <div
+        className="
+          absolute inset-0
+          bg-[url('/images/Website_Gallery_Scroll_Images.jpg')]  /* Replace with your image path */
+          bg-repeat-x                 /* Repeat horizontally to enable the loop */
+          bg-[length:auto_100%]      /* Adjust height if needed, e.g., auto 100% */
+          animate-scrolling          /* Use the custom animation we defined */
+          z-1
+          "
+      >
+        {/* You can put content here or leave it empty if it's purely decorative */}
+      </div>
+    <div className="z-2 flex flex-col min-h-screen font-[family-name:var(--font-geist-sans)]">
       {/* Main Content Wrapper (fills remaining space) */}
-      <div className="flex flex-col md:flex-row flex-grow p-8 pb-20 gap-16 sm:p-20">
+      <div className="z-3 flex md:h-2/3 flex-col md:flex-row flex-grow p-8 pb-20 gap-16 sm:p-20">
         {/* Sidebar */}
-        <ul className="md:w-1/4 flex flex-col fgap-6 p-4 bg-center justify-center">
+        <ul className="z-50 w-[calc(15vw+3em+4rem)] flex flex-col fgap-6 p-4 self-center rounded-3xl bg-brand-beige-900/85">
           <li>
             <Link href="/about" className="cmn-line_motion--white">
               About Me
@@ -31,30 +45,12 @@ export default function Home() {
             </Link>
           </li>
         </ul>
-
-        {/* Main Section */}
         {/* Note: changed md:w-100 -> md:w-full for valid Tailwind */}
-        <main className="md:w-full flex flex-col gap-8 items-center sm:items-start">
-          <div className="container mx-auto px-4 py-8">
-            <h1 className="text-3xl font-bold mb-6">Gallery</h1>
-            {/* Switch from grid to flex */}
-            <div className="flex flex-wrap gap-x-6 gap-y-20">
-              {artworks.map((art) => (
-                <div
-                  key={art.id}
-                  className="w-[300px] h-[300px] flex-none"
-                >
-                  {/* Card with a fixed size */}
-                  <ArtworkCard artwork={art} />
-                </div>
-              ))}
-            </div>
-          </div>
-        </main>
       </div>
 
       {/* Footer outside the flex row */}
      <Srfooter />
     </div>
+    </main>
   );
 }

@@ -1,7 +1,7 @@
 "use client"; // Mark this component as a client component
 import { useState, useEffect } from 'react';
 
-export default function ArtworkCard({ artwork }) {
+export default function BookCard({ book }) {
   // State to control modal visibility
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
@@ -47,61 +47,78 @@ export default function ArtworkCard({ artwork }) {
 
   return (
     <div>
-      {/* Artwork Card */}
+      {/* book Card */}
       <div
         onClick={openModal} // Open modal on click
         className="block border rounded-lg overflow-hidden shadow-lg transition-opacity duration-300 hover:opacity-80  cursor-pointer"
       >
         <img
-          src={artwork.imageUrl}
-          alt={artwork.title}
+          src={book.imageUrl}
+          alt={book.title}
           className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300"
         />
-        <div className="p-4 bg-brand-brown-900">
-          <h2 className="text-xl font-semibold">{artwork.title}</h2>
-          <p className="text-brand-beige-400">{artwork.description}</p>
+        <div className="p-4">
+          <h2 className="text-xl font-semibold">{book.title}</h2>
+          <p className="text-brand-beige-400 singleLineContainer">{book.description}</p>
         </div>
       </div>
 
       {/* Modal */}
       {isModalOpen && (
         <div
-          className={`fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 transition-opacity duration-300 ${
+            className={`fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 transition-opacity duration-300 ${
             isVisible ? 'opacity-100' : 'opacity-0'
-          }`}
-          onClick={closeModal} // Close modal when backdrop is clicked
-        >
-          <div
-            className={`bg-brand-beige-300 rounded-lg shadow-lg w-11/12 md:w-3/4 lg:w-2/3 max-w-4xl flex overflow-hidden transform transition-transform duration-300 ${
-              isVisible ? 'translate-y-0 scale-100' : 'translate-y-4 scale-95'
             }`}
-            onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside the modal
-          >
-            {/* Artwork Image */}
-            <div className="w-2/3">
-              <img
-                src={artwork.imageUrl}
-                alt={artwork.title}
+            onClick={closeModal} // Close modal when backdrop is clicked
+        >
+            <div
+            className={`
+                bg-brand-beige-300 
+                rounded-lg 
+                shadow-lg 
+                w-11/12 
+                md:w-3/4 
+                lg:w-3/4 
+                max-w-8xl 
+                flex  /* Make it a flex container */
+                max-h-[80vh]  /* Constrain maximum height */
+                overflow-auto /* Allow scrolling inside if content exceeds max-h */
+                transform 
+                transition-transform 
+                duration-300
+                ${isVisible ? 'translate-y-0 scale-100' : 'translate-y-4 scale-95'}
+            `}
+            onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside
+            >
+            {/* Book Image */}
+            <div className="w-2/3 flex-shrink-0">
+                <img
+                src={book.imageUrl}
+                alt={book.title}
                 className="w-full h-full object-cover"
-              />
+                />
             </div>
 
             {/* Textbox */}
-            <div className="w-1/3 p-6">
-              <h2 className="text-brand-brown-600 font-bold font-size mb-4 text-[calc(1vw+1em)]">{artwork.title}</h2>
-              <p className="text-gray-700 text-[calc(0.5vw+0.75em)]">{artwork.description}</p>
-              <a
+            <div className="w-1/3 p-6 overflow-auto">
+                <h2 className="text-brand-brown-600 font-bold mb-4 text-[calc(1vw+1em)]">
+                {book.title}
+                </h2>
+                <p className="text-gray-600 text-[calc(0.5vw+0.75em)]">
+                {book.description}
+                </p>
+                <a
                 className="text-brand-pink-500 hover:underline text-[calc(0.5vw+0.75em)]"
-                href={artwork.storelink}
-                target="_blank" // Open link in a new tab 
-                rel="noopener noreferrer" // Securitybest practices
-              >
-                Purchase Artwork
-              </a>
+                href={book.storelink}
+                target="_blank"
+                rel="noopener noreferrer"
+                >
+                Purchase book
+                </a>
             </div>
-          </div>
+            </div>
         </div>
-      )}
+        )}
     </div>
   );
 }

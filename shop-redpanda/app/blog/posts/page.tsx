@@ -1,6 +1,6 @@
 // app/blog/post.tsx
 import React from 'react';
-import Navbar from "../../../components/navbar";
+import Navbar from "@/components/navbar";
 
 const Post = () => {
   return (

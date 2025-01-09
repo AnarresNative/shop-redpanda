@@ -1,6 +1,7 @@
 "use client"; 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,10 +13,10 @@ export default function Navbar() {
   return (
     <>
       {/* Hamburger Icon */}
-      <div className="fixed top-4 right-4 z-50 cursor-pointer" onClick={toggleNavbar}>
-        <div className="w-8 h-1 bg-pink-300 mb-1"></div>
-        <div className="w-8 h-1 bg-pink-400 mb-1"></div>
-        <div className="w-8 h-1 bg-pink-500"></div>
+      <div className="fixed top-4 right-4 z-100 cursor-pointer" onClick={toggleNavbar}>
+        <div className="w-8 h-1 bg-pink-100 mb-1"></div>
+        <div className="w-8 h-1 bg-pink-200 mb-1"></div>
+        <div className="w-8 h-1 bg-pink-300"></div>
       </div>
 
       {/* Top Navbar */}
@@ -24,6 +25,9 @@ export default function Navbar() {
           isOpen ? "translate-y-0" : "-translate-y-full"
         } transition-transform duration-300`}
       >
+         <Link href="" className="cmn-line_motion--white">
+         <Image src="/images/shop_redpanda.png" alt="Etsy Logo" className="w-6 h-6 transition-opacity duration-100 hover:opacity-60" width={500} height={500}/>
+         </Link>
         <nav className="flex flex-col sm:flex-row items-center justify-center p-4 gap-10 text-[calc(0.1vw+0.1em)]">
           <Link href="/about" className="cmn-line_motion--white">
             About Me

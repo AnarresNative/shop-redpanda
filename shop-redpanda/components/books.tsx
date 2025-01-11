@@ -1,5 +1,6 @@
 "use client"; // Mark this component as a client component
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 export default function BookCard({ book }) {
   // State to control modal visibility
@@ -52,7 +53,7 @@ export default function BookCard({ book }) {
         onClick={openModal} // Open modal on click
         className="block border rounded-lg overflow-hidden shadow-lg transition-opacity duration-300 hover:opacity-80  cursor-pointer"
       >
-        <img
+        <Image
           src={book.imageUrl}
           alt={book.title}
           className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300"
@@ -92,10 +93,11 @@ export default function BookCard({ book }) {
             >
             {/* Book Image */}
             <div className="w-2/3 flex-shrink-0">
-                <img
+                <Image
                 src={book.imageUrl}
                 alt={book.title}
                 className="w-full h-full object-cover"
+                fill={true}
                 />
             </div>
 

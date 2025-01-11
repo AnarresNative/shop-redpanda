@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 export default function Srfooter() {
     return (
-    <footer className="w-full flex fixed bottom-0 gap-6 flex-wrap items-center justify-center p-4 bg-brand-brown-400">
+    <footer className="w-full flex fixed bottom-0 gap-6 flex-wrap items-center justify-center p-4 bg-brand-orange-500">
         <p className="text-[calc(0.2vw+0.75em)]">&copy; 2025 Shop-Redpanda</p>
         <a
         className="text-brand-pink-300 hover:underline text-[calc(0.2vw+0.75em)]"

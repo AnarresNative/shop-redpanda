@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Cabin:ital,wght@0,400..700;1,400..700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -10,23 +12,9 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #252423;
-    --foreground: 	#bbb8ae;
+    --background: #b4836c;
+    --foreground: 	#feece3;
   }
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.scrolling-background {
-  width: 100%;
-  height: 100vh;
-  background: url('/path/to/stitched-image.jpg') repeat-x;
-  background-size: cover; /* or contain, depending on your preference */
-  animation: scrollBackground 30s linear infinite;
 }
 
 @keyframes scrollBackground {
@@ -34,6 +22,34 @@ body {
     background-position: 0 0;
   }
   100% {
-    background-position: -1000px 0; /* shift horizontally to match the image width */
+    background-position: -1000px 0; 
   }
 }
+
+@font-face {
+  font-family:"quiche-sans";
+  src:url("https://use.typekit.net/af/c7c5f3/00000000000000007735cae0/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("woff2"),url("https://use.typekit.net/af/c7c5f3/00000000000000007735cae0/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("woff"),url("https://use.typekit.net/af/c7c5f3/00000000000000007735cae0/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("opentype");
+  font-display:auto;font-style:normal;font-weight:700;font-stretch:normal;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Cabin,sans-serif;
+}
+
+
+.type_line{
+  color: #f0f0f0;
+  font-family: quiche-sans,sans-serif;
+  font-size: 20vh;
+  font-size: clamp(7rem,18.75vh,15rem);
+  font-weight: 700;
+  line-height: .75;
+  opacity: 0.07;
+  user-select: none;
+  white-space: nowrap;
+  text-align: center;
+  text-transform: uppercase;
+}
+

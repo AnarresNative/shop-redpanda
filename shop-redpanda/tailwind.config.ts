@@ -15,7 +15,7 @@ export default {
         },
       },
       animation: {
-        scrolling: 'scrolling 50s linear infinite',
+        scrolling: 'scrolling 100s linear infinite',
       },
       colors: {
         background: "var(--background)",
@@ -58,17 +58,14 @@ export default {
             900: '#181818',
           },
           lightPink: {
-            50: '#fffafa',
-            100: '#fef6f5',
-            200: '#fdeeed',
-            300: '#f9e7e6', // Original extracted color
-            400: '#eecfcf',
-            500: '#e0a7a7',
-            600: '#c78181',
-            700: '#a16161',
-            800: '#7c4747',
-            900: '#5b3434',
+            300: '#f0dee4', // Original extracted color
+            400: '#e6c4d0',
+            500: '#d9a4b5',
+            600: '#c88397',
+            700: '#b3627a',
+            800: '#9c425e',
           },
+
           blueGray: {
             50: '#f5f6f7',
             100: '#e6eaec',
@@ -81,10 +78,70 @@ export default {
             800: '#192227',
             900: '#10191e',
           },
+          orange:{
+            50: '#fff5f0',
+            100: '#feece3',
+            200: '#fdd8c1',
+            300: '#b4836c',
+            400: '#a35f3f',
+            500: '#8d4b2b',
+            600: '#7c3e24',
+            700: '#6a331d',
+          },
+          lightOrange: {
+            50:  '#fefcf8',
+            100: '#fcf8f1',
+            200: '#fbf4e6',
+            300: '#f9f3ea', // given
+            400: '#f3e0c5', // given
+            500: '#e9c69a', // given
+            600: '#d9a46f', // given
+            700: '#c88244', // given
+            800: '#b9611a', // given
+            900: '#a84a00', // given
+          },
+          slate: {
+            50:  '#f7f6f3',
+            100: '#eeece7',
+            200: '#ddd9d2',
+            300: '#c4c1ba', // given
+            400: '#aba9a0',
+            500: '#949189',
+            600: '#7c7972',
+            700: '#64625c',
+            800: '#4b4943',
+            900: '#322f2c',
+          },
+  
+          // 2) yellow: 300 originally #f9f3ea
+          yellow: {
+            50:  '#fefcf9',
+            100: '#fdf9f3',
+            200: '#fbf5ee',
+            300: '#f9f3ea', // given
+            400: '#f3e6d9',
+            500: '#edd8c4',
+            600: '#e1c3a3',
+            700: '#cba67c',
+            800: '#ab8556',
+            900: '#876738',
+          },
+          slateDark: {
+            50:  '#f6f5f4',
+            100: '#eceae9',
+            200: '#dcd7d5',
+            300: '#b8b3b1', // given
+            400: '#a09c9a',
+            500: '#888483',
+            600: '#716e6d',
+            700: '#5a5757',
+            800: '#3f3d3c',
+            900: '#272524',
+          },
+          }
         },
       },
     },
-  },
   plugins: [
     function ({ addUtilities }) {
       addUtilities({
@@ -106,6 +163,24 @@ export default {
           'overflow': 'hidden',    /* Hide any text that overflows the width */
           'text-overflow': 'ellipsis',/* Show ellipses (...) when text overflows */
         }
+      });
+    },
+    function({ addBase, theme }) {
+      function extractColorVars(colorObj, colorGroup = '') {
+        return Object.keys(colorObj).reduce((vars, colorKey) => {
+          const value = colorObj[colorKey];
+
+          const newVars =
+            typeof value === 'string'
+              ? { [`--color${colorGroup}-${colorKey}`]: value }
+              : extractColorVars(value, `-${colorKey}`);
+
+          return { ...vars, ...newVars };
+        }, {});
+      }
+
+      addBase({
+        ':root': extractColorVars(theme('colors')),
       });
     },
   ],

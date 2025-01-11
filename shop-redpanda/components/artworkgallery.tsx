@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import ArtworkCard from "./artwork";
+import Image from "next/image";
 
 export default function ArtworkGallery({ artworks }) {
   const [featured, setFeatured] = useState(artworks?.[0] || null);
@@ -13,7 +14,7 @@ export default function ArtworkGallery({ artworks }) {
         - `overflow-auto h-screen` ensures this area is scrollable.
       */}
 
-        <div className="flex w-2/3 flex-wrap gap-x-6 gap-y-6 p-4">
+        <div className="flex lg:w-2/3 md:max-w-full flex-wrap gap-x-6 gap-y-6 p-4">
           {artworks.map((art) => (
             <div
               key={art.id}
@@ -33,15 +34,19 @@ export default function ArtworkGallery({ artworks }) {
         - `fixed top-0 right-0 w-1/2 h-screen` ensures it stays in place.
       */}
       {featured && (
-        <div className="hidden md:flex fixed top-0 right-0 w-1/3 h-screen flex-col items-center justify-center p-4 bg-brand-beige-800">
-          <img
+        <div className="hidden lg:flex fixed top-0 right-0 w-2/5 h-screen flex-col items-center justify-center p-4 bg-brand-lightOrange-500">
+          <div>
+          <Image
             src={featured.imageUrl}
             alt={featured.title}
             className="object-cover w-auto"
+            width={500}
+            height={500}
           />
-          <p className="mt-2 text-center text-lg font-semibold">
+          <p className="mt-2 text-center font-sans text-4xl text-brand-orange-700">
             {featured.title}
           </p>
+          </div>
         </div>
       )}
     </div>

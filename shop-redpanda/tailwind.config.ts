@@ -21,6 +21,18 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
         brand: {
+          warm: {
+            50: "#fefbf6",
+            100: "#faf5eb", // Base color
+            200: "#f2e3d9",
+            300: "#e5cdc3", // Accent color
+            400: "#d4b5a8",
+            500: "#a97c68",
+            600: "#705a4e",
+            700: "#3f2f29",
+            800: "#2d1f1b",
+            900: "#1b120e",
+          },
           beige: {
             50: '#f6f5f4',
             100: '#edeceb',
@@ -146,16 +158,16 @@ export default {
     function ({ addUtilities }) {
       addUtilities({
         '.cmn-line_motion--white': {
-          'background-image': 'linear-gradient(to right, #fff 100%, transparent 0)',
+          'background-image': 'linear-gradient(to right, #705a4e 100%, transparent 0)',
           'background-position': 'center left',
           'background-repeat': 'no-repeat',
           // e.g. 2px high line 
-          'background-size': '0 2px',
+          'background-size': '0 4px',
           'transition': 'background-size 0.25s cubic-bezier(0.165, 0.84, 0.44, 1)',
           'font-size': 'calc(2vw + 3em)',
         },
         '.cmn-line_motion--white:hover': {
-        'background-size': '100% 2px',
+        'background-size': '100% 4px',
         },
          '.singleLineContainer': {
           'width': '200',        /* Set a width to constrain the text */

@@ -23,7 +23,7 @@ export default function Home() {
       {/* Main Content Wrapper (fills remaining space) */}
       <div className="z-3 flex md:h-2/3 flex-col md:flex-row flex-grow p-8 pb-20 gap-16 sm:p-20">
         {/* Sidebar */}
-        <ul className="z-50 w-[calc(18vw+6em+10rem)] flex flex-col fgap-6 p-4 self-center rounded-3xl bg-brand-orange-500/85">
+        <ul className="z-50 w-[calc(18vw+6em+10rem)] flex flex-col fgap-6 p-4 self-center rounded-3xl bg-brand-warm-300/90">
           <li>
             <Link href="/about" className="cmn-line_motion--white">
               About Me

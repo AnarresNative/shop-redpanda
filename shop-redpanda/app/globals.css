@@ -5,15 +5,15 @@
 @tailwind utilities;
 
 :root {
-  --background: #bbb8ae;
-  --foreground: #514b4a;
+  --background: #b4836c;
+  --foreground: #feece3;
   --pc-width: calc(100vw - 10px)
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #b4836c;
-    --foreground: 	#feece3;
+  --background: #faf5eb;
+  --foreground: #705a4e;
   }
 }
 
@@ -40,7 +40,7 @@ body {
 
 
 .type_line{
-  color: #f0f0f0;
+  color: #a97c68;
   font-family: quiche-sans,sans-serif;
   font-size: 20vh;
   font-size: clamp(7rem,18.75vh,15rem);

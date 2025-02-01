@@ -34,7 +34,7 @@ export default function ArtworkGallery({ artworks }) {
         - `fixed top-0 right-0 w-1/2 h-screen` ensures it stays in place.
       */}
       {featured && (
-        <div className="hidden lg:flex fixed top-0 right-0 w-2/5 h-screen flex-col items-center justify-center p-4 bg-brand-lightOrange-500">
+        <div className="hidden lg:flex fixed top-0 right-0 w-2/5 h-screen flex-col items-center justify-center p-4 bg-brand-warm-200/50">
           <div>
           <Image
             src={featured.imageUrl}
@@ -43,7 +43,7 @@ export default function ArtworkGallery({ artworks }) {
             width={500}
             height={500}
           />
-          <p className="mt-2 text-center font-sans text-4xl text-brand-orange-700">
+          <p className="mt-2 text-center font-sans text-4xl text-brand-warm-600">
             {featured.title}
           </p>
           </div>

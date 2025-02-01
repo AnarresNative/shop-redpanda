@@ -60,7 +60,7 @@ export default function ArtworkCard({ artwork }) {
           width={500}
           height={500}
         />
-        <div className="p-4 bg-brand-orange-700">
+        <div className="p-4 bg-brand-warm-200">
           <h2 className="text-xl font-semibold">{artwork.title}</h2>
           <p className="">{artwork.description}</p>
         </div>
@@ -69,13 +69,13 @@ export default function ArtworkCard({ artwork }) {
       {/* Modal */}
       {isModalOpen && (
         <div
-          className={`fixed inset-0 z-50 flex items-center justify-center bg-brand-orange-400 bg-opacity-50 transition-opacity duration-300 ${
+          className={`fixed inset-0 z-50 flex items-center justify-center bg-brand-warm-400 bg-opacity-50 transition-opacity duration-300 ${
             isVisible ? 'opacity-100' : 'opacity-0'
           }`}
           onClick={closeModal} // Close modal when backdrop is clicked
         >
           <div
-            className={`bg-brand-lightOrange-900 rounded-lg shadow-lg w-11/12 md:w-3/4 lg:w-11/12 max-w-5xl flex overflow-hidden transform transition-transform duration-300 ${
+            className={`bg-brand-warm-200 rounded-lg shadow-lg w-11/12 md:w-3/4 lg:w-11/12 max-w-5xl flex overflow-hidden transform transition-transform duration-300 ${
               isVisible ? 'translate-y-0 scale-100' : 'translate-y-4 scale-95'
             }`}
             onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside the modal
@@ -96,7 +96,7 @@ export default function ArtworkCard({ artwork }) {
               <h2 className=" font-bold font-size mb-4 text-[calc(1vw+1em)]">{artwork.title}</h2>
               <p className=" text-[calc(0.5vw+0.75em)]">{artwork.description}</p>
               <a
-                className="text-brand-pink-300 hover:underline text-[calc(0.5vw+0.75em)]"
+                className="text-brand-pink-500 hover:underline text-[calc(0.5vw+0.75em)]"
                 href={artwork.storelink}
                 target="_blank" // Open link in a new tab 
                 rel="noopener noreferrer" // Securitybest practices

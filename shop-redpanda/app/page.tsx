@@ -35,7 +35,7 @@ export default function Home() {
             </Link>
           </li>
           <li>
-            <Link href="/blog/posts" className="cmn-line_motion--white">
+            <Link href="/blog" className="cmn-line_motion--white">
               Blog Posts
             </Link>
           </li>

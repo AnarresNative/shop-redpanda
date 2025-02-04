@@ -46,3 +46,4 @@ export default async function PostPage(props: PageProps) {
       <div dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
     </article>
   );
+}

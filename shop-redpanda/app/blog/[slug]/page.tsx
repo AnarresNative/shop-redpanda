@@ -27,8 +27,9 @@ async function getPostData(slug: string): Promise<Post> {
   };
 }
 
+// Allow params to be either a plain object or a promise
 interface PageProps {
-  params: { slug: string };
+  params: { slug: string } | Promise<{ slug: string }>;
 }
 
 // Note: Do not destructure `params` in the function signature.

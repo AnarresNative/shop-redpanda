@@ -5,8 +5,8 @@
 @tailwind utilities;
 
 :root {
-  --background: #b4836c;
-  --foreground: #feece3;
+  --background: #faf5eb;
+  --foreground: #705a4e;
   --pc-width: calc(100vw - 10px)
 }
 

@@ -15,10 +15,13 @@ const Post = () => {
           <p>
             All About Me!
           </p>
-          <p>
-            Add more paragraphs, headings, images, or any other content as needed. Tailwind&apos;s `prose` class is great for
-            text-heavy content.
-          </p>
+            <p>
+            Hi! I&apos;m Céline Cresswell, a UK-based artist specialising in digital art and character illustration. I am the published author of two illustrated titles, &apos;Draw Manga Faces, Heads and Hairstyles: The Workbook&apos; and &apos;Beginner&apos;s Guide to Drawing Manga Bodies and Poses&apos;. I&apos;ve run a successful Etsy shop for digital commissions since 2021, and as of 2024 started selling physical prints and stickers. I&apos;ve sold at conventions such as MCM, hosted multiple manga drawing tutorials at Waterstones Piccadilly and similarly for Warner Bros&apos; movie campaign to promote LOTR: The War of the Rohirrim.
+
+      I love to draw, particularly cute, fantasy and game characters.
+
+      My original characters Mae and Cali are two fairies, who&apos;s story and world I am building overtime, through my own experiences and interests. They serve as a great tool to draw nature from a fantasy perspective. Mae is an ocean fairy whilst Cali is a moon fairy.
+            </p>
         </div>
       </div>
     </div>

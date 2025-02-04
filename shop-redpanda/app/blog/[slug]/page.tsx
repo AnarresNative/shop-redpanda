@@ -29,13 +29,12 @@ async function getPostData(slug: string): Promise<Post> {
 
 // Allow params to be either a plain object or a promise
 interface PageProps {
-  params: { slug: string } | Promise<{ slug: string }>;
+  params: Promise<{ slug: string }>;
 }
 
 // Note: Do not destructure `params` in the function signature.
 export default async function PostPage(props: PageProps) {
-  // Await the dynamic parameters before using them.
-  const { slug } = await Promise.resolve(props.params);
+  const { slug } = await props.params; // props.params is guaranteed to be a Promise now
   const post = await getPostData(slug);
 
   return (
@@ -47,4 +46,3 @@ export default async function PostPage(props: PageProps) {
       <div dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
     </article>
   );
-}

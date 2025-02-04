@@ -1,7 +1,29 @@
 import type { Config } from "tailwindcss";
 import plugin from 'tailwindcss/plugin'
 
-export default {
+const customPlugin = plugin(function({ addUtilities }) {
+  addUtilities({
+    '.cmn-line_motion--white': {
+      backgroundImage: 'linear-gradient(to right, #705a4e 100%, transparent 0)',
+      backgroundPosition: 'center left',
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: '0 4px',
+      transition: 'background-size 0.25s cubic-bezier(0.165, 0.84, 0.44, 1)',
+      fontSize: 'calc(2vw + 3em)',
+    },
+    '.cmn-line_motion--white:hover': {
+      backgroundSize: '100% 4px',
+    },
+    '.singleLineContainer': {
+      width: '200px',       // Include "px" or another valid unit
+      whiteSpace: 'nowrap', 
+      overflow: 'hidden',    
+      textOverflow: 'ellipsis',
+    },
+  })
+})
+
+const config: Config = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -155,30 +177,8 @@ export default {
         },
       },
     },
+    plugins: [customPlugin], // include the plugin here
 } satisfies Config;
 
-const customPlugin = plugin(function({ addUtilities }) {
-  addUtilities({
-    '.cmn-line_motion--white': {
-      backgroundImage: 'linear-gradient(to right, #705a4e 100%, transparent 0)',
-      backgroundPosition: 'center left',
-      backgroundRepeat: 'no-repeat',
-      backgroundSize: '0 4px',
-      transition: 'background-size 0.25s cubic-bezier(0.165, 0.84, 0.44, 1)',
-      fontSize: 'calc(2vw + 3em)',
-    },
-    '.cmn-line_motion--white:hover': {
-      backgroundSize: '100% 4px',
-    },
-    '.singleLineContainer': {
-      width: '200px',       // Include "px" or another valid unit
-      whiteSpace: 'nowrap', 
-      overflow: 'hidden',    
-      textOverflow: 'ellipsis',
-    },
-  })
-})
 
-module.exports = {
-  plugins: [customPlugin],
-};
+export default config;

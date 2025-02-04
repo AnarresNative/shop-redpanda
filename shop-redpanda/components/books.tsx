@@ -37,7 +37,7 @@ export default function BookCard({ book }: Books) {
 
   // Handle Esc key to close modal
   useEffect(() => {
-    const handleEsc = (event) => {
+    const handleEsc = (event: KeyboardEvent) => {
       if (event.key === 'Escape' && isModalOpen) {
         closeModal();
       }
@@ -45,7 +45,7 @@ export default function BookCard({ book }: Books) {
     window.addEventListener('keydown', handleEsc);
     return () => window.removeEventListener('keydown', handleEsc);
   }, [isModalOpen]);
-
+  
   // Prevent background scroll when modal is open
   useEffect(() => {
     if (isModalOpen) {

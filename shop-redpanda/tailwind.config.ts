@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import plugin from 'tailwindcss/plugin'
 
 export default {
   content: [
@@ -154,46 +155,30 @@ export default {
         },
       },
     },
-  plugins: [
-    function ({ addUtilities }) {
-      addUtilities({
-        '.cmn-line_motion--white': {
-          'background-image': 'linear-gradient(to right, #705a4e 100%, transparent 0)',
-          'background-position': 'center left',
-          'background-repeat': 'no-repeat',
-          // e.g. 2px high line 
-          'background-size': '0 4px',
-          'transition': 'background-size 0.25s cubic-bezier(0.165, 0.84, 0.44, 1)',
-          'font-size': 'calc(2vw + 3em)',
-        },
-        '.cmn-line_motion--white:hover': {
-        'background-size': '100% 4px',
-        },
-         '.singleLineContainer': {
-          'width': '200',        /* Set a width to constrain the text */
-          'white-space': 'nowrap', /* Prevent the text from wrapping to the next line */
-          'overflow': 'hidden',    /* Hide any text that overflows the width */
-          'text-overflow': 'ellipsis',/* Show ellipses (...) when text overflows */
-        }
-      });
-    },
-    function({ addBase, theme }) {
-      function extractColorVars(colorObj, colorGroup = '') {
-        return Object.keys(colorObj).reduce((vars, colorKey) => {
-          const value = colorObj[colorKey];
-
-          const newVars =
-            typeof value === 'string'
-              ? { [`--color${colorGroup}-${colorKey}`]: value }
-              : extractColorVars(value, `-${colorKey}`);
-
-          return { ...vars, ...newVars };
-        }, {});
-      }
-
-      addBase({
-        ':root': extractColorVars(theme('colors')),
-      });
-    },
-  ],
 } satisfies Config;
+
+const customPlugin = plugin(function({ addUtilities }) {
+  addUtilities({
+    '.cmn-line_motion--white': {
+      backgroundImage: 'linear-gradient(to right, #705a4e 100%, transparent 0)',
+      backgroundPosition: 'center left',
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: '0 4px',
+      transition: 'background-size 0.25s cubic-bezier(0.165, 0.84, 0.44, 1)',
+      fontSize: 'calc(2vw + 3em)',
+    },
+    '.cmn-line_motion--white:hover': {
+      backgroundSize: '100% 4px',
+    },
+    '.singleLineContainer': {
+      width: '200px',       // Include "px" or another valid unit
+      whiteSpace: 'nowrap', 
+      overflow: 'hidden',    
+      textOverflow: 'ellipsis',
+    },
+  })
+})
+
+module.exports = {
+  plugins: [customPlugin],
+};

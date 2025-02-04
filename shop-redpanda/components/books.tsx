@@ -2,7 +2,20 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
-export default function BookCard({ book }) {
+interface Book {
+  id: string;
+  title: string;
+  description: string;
+  imageUrl: string;
+  storelink: string;
+}
+
+interface Books {
+  book: Book;
+}
+
+
+export default function BookCard({ book }: Books) {
   // State to control modal visibility
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(false);

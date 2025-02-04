@@ -2,7 +2,21 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
-export default function ArtworkCard({ artwork }) {
+// Define an interface for artwork
+interface Artwork {
+  id: string;
+  imageUrl: string;
+  title: string;
+  description: string;
+  storelink: string;
+}
+
+// Define a props interface for the component
+interface ArtworkCardProps {
+  artwork: Artwork;
+}
+
+export default function ArtworkCard({ artwork }: ArtworkCardProps) {
   // State to control modal visibility
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
@@ -24,7 +38,7 @@ export default function ArtworkCard({ artwork }) {
 
   // Handle Esc key to close modal
   useEffect(() => {
-    const handleEsc = (event) => {
+    const handleEsc = (event: KeyboardEvent) => {
       if (event.key === 'Escape' && isModalOpen) {
         closeModal();
       }
@@ -51,7 +65,7 @@ export default function ArtworkCard({ artwork }) {
       {/* Artwork Card */}
       <div
         onClick={openModal} // Open modal on click
-        className="block border rounded-lg overflow-hidden shadow-lg transition-opacity duration-300 hover:opacity-80  cursor-pointer"
+        className="block border rounded-lg overflow-hidden shadow-lg transition-opacity duration-300 hover:opacity-80 cursor-pointer"
       >
         <Image
           src={artwork.imageUrl}
@@ -62,7 +76,7 @@ export default function ArtworkCard({ artwork }) {
         />
         <div className="p-4 bg-brand-warm-200">
           <h2 className="text-xl font-semibold">{artwork.title}</h2>
-          <p className="">{artwork.description}</p>
+          <p>{artwork.description}</p>
         </div>
       </div>
 
@@ -93,13 +107,13 @@ export default function ArtworkCard({ artwork }) {
 
             {/* Textbox */}
             <div className="w-1/3 p-6">
-              <h2 className=" font-bold font-size mb-4 text-[calc(1vw+1em)]">{artwork.title}</h2>
-              <p className=" text-[calc(0.5vw+0.75em)]">{artwork.description}</p>
+              <h2 className="font-bold font-size mb-4 text-[calc(1vw+1em)]">{artwork.title}</h2>
+              <p className="text-[calc(0.5vw+0.75em)]">{artwork.description}</p>
               <a
                 className="text-brand-pink-500 hover:underline text-[calc(0.5vw+0.75em)]"
                 href={artwork.storelink}
                 target="_blank" // Open link in a new tab 
-                rel="noopener noreferrer" // Securitybest practices
+                rel="noopener noreferrer" // Security best practices
               >
                 Purchase Artwork
               </a>

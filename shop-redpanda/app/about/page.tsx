@@ -16,7 +16,7 @@ const Post = () => {
             All About Me!
           </p>
           <p>
-            Add more paragraphs, headings, images, or any other content as needed. Tailwind's `prose` class is great for
+            Add more paragraphs, headings, images, or any other content as needed. Tailwind&apos;s `prose` class is great for
             text-heavy content.
           </p>
         </div>

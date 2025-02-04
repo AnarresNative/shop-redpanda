@@ -1,6 +1,4 @@
 import Link from "next/link";
-import ArtworkCard from "../components/artwork";
-import { artworks } from "../data/artworks";
 import Srfooter from "../components/footer";
 
 export default function Home() {

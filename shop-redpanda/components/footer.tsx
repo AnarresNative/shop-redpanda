@@ -1,6 +1,5 @@
 "use client"; 
 import Image from "next/image";
-import Link from "next/link";
 export default function Srfooter() {
     return (
     <footer className="w-full flex fixed bottom-0 gap-6 flex-wrap items-center justify-center p-4 bg-brand-warm-300">

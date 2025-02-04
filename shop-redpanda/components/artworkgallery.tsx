@@ -1,126 +1,59 @@
-"use client"; // Mark this component as a client component
-import { useState, useEffect } from 'react';
-import Image from 'next/image';
+"use client";
+import { useState } from "react";
+import ArtworkCard from "./artwork";
+import Image from "next/image";
 
-// Define an interface for artwork
+// Define what a single artwork looks like
 interface Artwork {
   id: string;
-  imageUrl: string;
   title: string;
   description: string;
+  imageUrl: string;
   storelink: string;
 }
 
-// Define a props interface for the component
-interface ArtworkCardProps {
-  artwork: Artwork;
+// Define the props for the gallery component
+interface ArtworkGalleryProps {
+  artworks: Artwork[];
 }
 
-export default function ArtworkCard({ artwork }: ArtworkCardProps) {
-  // State to control modal visibility
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
-
-  // Function to open the modal
-  const openModal = () => {
-    setIsModalOpen(true);
-    requestAnimationFrame(() => {
-      setIsVisible(true);
-    });
-  };
-
-  // Function to close the modal
-  const closeModal = () => {
-    setIsVisible(false);
-    // Wait for the transition to complete before unmounting
-    setTimeout(() => setIsModalOpen(false), 300); // Duration matches Tailwind's duration-300
-  };
-
-  // Handle Esc key to close modal
-  useEffect(() => {
-    const handleEsc = (event: KeyboardEvent) => {
-      if (event.key === 'Escape' && isModalOpen) {
-        closeModal();
-      }
-    };
-    window.addEventListener('keydown', handleEsc);
-    return () => window.removeEventListener('keydown', handleEsc);
-  }, [isModalOpen]);
-
-  // Prevent background scroll when modal is open
-  useEffect(() => {
-    if (isModalOpen) {
-      document.body.classList.add('overflow-hidden');
-    } else {
-      document.body.classList.remove('overflow-hidden');
-    }
-
-    return () => {
-      document.body.classList.remove('overflow-hidden');
-    };
-  }, [isModalOpen]);
+// Now use this interface in the component’s definition
+export default function ArtworkGallery({ artworks }: ArtworkGalleryProps) {
+  const [featured, setFeatured] = useState(artworks?.[0] || null);
 
   return (
-    <div>
-      {/* Artwork Card */}
-      <div
-        onClick={openModal} // Open modal on click
-        className="block border rounded-lg overflow-hidden shadow-lg transition-opacity duration-300 hover:opacity-80 cursor-pointer"
-      >
-        <Image
-          src={artwork.imageUrl}
-          alt={artwork.title}
-          className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300"
-          width={500}
-          height={500}
-        />
-        <div className="p-4 bg-brand-warm-200">
-          <h2 className="text-xl font-semibold">{artwork.title}</h2>
-          <p>{artwork.description}</p>
-        </div>
+    <div className="relative min-h-screen">
+      {/* LEFT COLUMN (scrollable) */}
+      <div className="flex lg:w-2/3 md:max-w-full flex-wrap gap-x-6 gap-y-6 p-4">
+        {artworks.map((art) => (
+          <div
+            key={art.id}
+            className="w-[300px] flex-none"
+            onMouseEnter={() => setFeatured(art)}
+          >
+            <ArtworkCard artwork={art} />
+          </div>
+        ))}
       </div>
 
-      {/* Modal */}
-      {isModalOpen && (
-        <div
-          className={`fixed inset-0 z-50 flex items-center justify-center bg-brand-warm-400 bg-opacity-50 transition-opacity duration-300 ${
-            isVisible ? 'opacity-100' : 'opacity-0'
-          }`}
-          onClick={closeModal} // Close modal when backdrop is clicked
-        >
-          <div
-            className={`bg-brand-warm-200 rounded-lg shadow-lg w-11/12 md:w-3/4 lg:w-11/12 max-w-5xl flex overflow-hidden transform transition-transform duration-300 ${
-              isVisible ? 'translate-y-0 scale-100' : 'translate-y-4 scale-95'
-            }`}
-            onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside the modal
-          >
-            {/* Artwork Image */}
-            <div className="w-2/3">
-              <Image
-                src={artwork.imageUrl}
-                alt={artwork.title}
-                className="w-full h-full object-cover"
-                width={500}
-                height={500}
-              />
-            </div>
-
-            {/* Textbox */}
-            <div className="w-1/3 p-6">
-              <h2 className="font-bold font-size mb-4 text-[calc(1vw+1em)]">{artwork.title}</h2>
-              <p className="text-[calc(0.5vw+0.75em)]">{artwork.description}</p>
-              <a
-                className="text-brand-pink-500 hover:underline text-[calc(0.5vw+0.75em)]"
-                href={artwork.storelink}
-                target="_blank" // Open link in a new tab 
-                rel="noopener noreferrer" // Security best practices
-              >
-                Purchase Artwork
-              </a>
-            </div>
+      {/* RIGHT COLUMN (fixed) */}
+      {featured && (
+        <div className="hidden lg:flex fixed top-0 right-0 w-2/5 h-screen flex-col items-center justify-center p-4 bg-brand-warm-200/50">
+          <div>
+            <Image
+              src={featured.imageUrl}
+              alt={featured.title}
+              className="object-cover w-auto"
+              width={500}
+              height={500}
+            />
+            <p className="mt-2 text-center font-sans text-4xl text-brand-warm-600">
+              {featured.title}
+            </p>
           </div>
         </div>
       )}
     </div>
   );
 }
+

@@ -24,7 +24,7 @@ export default function ArtworkGallery({ artworks }: ArtworkGalleryProps) {
   return (
     <div className="relative min-h-screen">
       {/* LEFT COLUMN (scrollable) */}
-      <div className="flex lg:w-2/3 md:max-w-full flex-wrap gap-x-6 gap-y-6 p-4">
+      <div className="flex lg:w-3/5 md:max-w-full flex-wrap gap-x-6 gap-y-6 p-4">
         {artworks.map((art) => (
           <div
             key={art.id}

@@ -14,7 +14,7 @@ interface Post {
 async function getPostData(slug: string): Promise<Post> {
   const postsDirectory = path.join(process.cwd(), 'posts');
   const filePath = path.join(postsDirectory, `${slug}.md`);
-  const fileContents = fs.readFileSync(filePath, 'utf8');
+  const fileContents = fs.readFileSync(filePath);
 
   const { data, content } = matter(fileContents);
   const processedContent = await remark().use(html).process(content);

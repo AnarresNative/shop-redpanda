@@ -5,7 +5,7 @@ import matter from 'gray-matter';
 import Link from 'next/link';
 import Image from 'next/image';
 import Background_text from '@/components/background_text';
-import Footer from '@/components/footer';
+import Srfooter from '@/components/footer';
 
 async function getPosts() {
   const postsDirectory = path.join(process.cwd(), 'posts');
@@ -39,6 +39,7 @@ export default async function BlogPage() {
   const posts = await getPosts();
 
   return (
+    <div>
     <div style={{ padding: '1rem' }}>
       <Background_text background_text="Blog" />
       <h1
@@ -87,7 +88,8 @@ export default async function BlogPage() {
           </Link>
         ))}
       </div>
-      <Footer />
+    </div>
+    <Srfooter />
     </div>
   );
 }

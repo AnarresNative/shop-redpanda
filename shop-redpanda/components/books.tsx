@@ -69,6 +69,8 @@ export default function BookCard({ book }: Books) {
         <Image
           src={book.imageUrl}
           alt={book.title}
+          width={500}
+          height={500}
           className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300"
         />
         <div className="p-4">
@@ -105,13 +107,15 @@ export default function BookCard({ book }: Books) {
             onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside
             >
             {/* Book Image */}
-            <div className="w-2/3 flex-shrink-0">
+            <div className="w-2/3 sticky flex-shrink-0">
+              <div>
                 <Image
                 src={book.imageUrl}
                 alt={book.title}
-                className="w-full h-full object-cover"
+                className="object-cover"
                 fill={true}
                 />
+                </div>
             </div>
 
             {/* Textbox */}

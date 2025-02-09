@@ -4,10 +4,13 @@ import Navbar from "@/components/navbar";
 import Srfooter from '@/components/footer';
 import BookCard from "@/components/books";
 import { books } from "@/data/books";
+import Background_text from '@/components/background_text';
+import { Back } from 'gsap';
 
 const Books = () => {
   return (
     <div className="flex flex-col min-h-screen font-[family-name:var(--font-geist-sans)]">
+    <Background_text background_text="Books" />
     <Navbar />
     <Srfooter />
        <main className="md:w-full flex flex-col gap-8 items-center sm:items-start">

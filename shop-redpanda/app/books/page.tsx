@@ -5,7 +5,6 @@ import Srfooter from '@/components/footer';
 import BookCard from "@/components/books";
 import { books } from "@/data/books";
 import Background_text from '@/components/background_text';
-import { Back } from 'gsap';
 
 const Books = () => {
   return (

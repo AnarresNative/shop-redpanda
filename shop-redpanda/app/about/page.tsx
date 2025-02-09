@@ -2,6 +2,7 @@
 import React from 'react';
 import Navbar from "@/components/navbar";
 import Background_text from '@/components/background_text';
+import Srfooter from '@/components/footer';
 
 const Post = () => {
   return (
@@ -19,6 +20,7 @@ const Post = () => {
             </p>
         </div>
       </div>
+    <Srfooter/>
     </div>
   );
 };

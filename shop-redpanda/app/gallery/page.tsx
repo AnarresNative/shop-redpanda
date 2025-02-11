@@ -3,6 +3,19 @@ import Background_text from "@/components/background_text";
 import Navbar from "@/components/navbar";
 import { artworks } from "@/data/artworks";
 import Footer from "@/components/footer";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "ShopRedpanda",
+  description: "The Shopredpanda gallery is the main art display and portfolio for the artist redpanda art",
+  keywords: [
+    "Redpanda Art",
+    "ShopRedpanda",
+    "Manga",
+    "Anime",
+    "Gallery"
+  ]
+};
 
 export default function Home() {
   return (

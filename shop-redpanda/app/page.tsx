@@ -42,25 +42,32 @@ export const metadata: Metadata = {
   }
 };
 
-const jsonLd = {
-'@context': 'https://schema.org',
-    '@type': 'Person',
-    name: 'Redpanda Art',
-    url: 'https://shopredpanda.com',
-    sameAs: [
-      'https://www.instagram.com/redpandaart',
-      'https://twitter.com/redpandaart'
-    ],
-    jobTitle: 'Digital Artist',
-    worksFor: {
-      '@type': 'Organization',
-      name: 'Shopredpanda'
-    },
-    description: 'A UK-based artist specializing in manga, anime, digital art, and character illustration.'
-  }
-
 export default function Home() {
+  const jsonLd = {
+      '@context': 'https://schema.org',
+          '@type': 'Person',
+          name: 'Redpanda Art',
+          url: 'https://shopredpanda.co.uk',
+          sameAs: [
+            'https://www.instagram.com/redpandaart',
+            'https://twitter.com/redpandaart'
+          ],
+          jobTitle: 'Digital Artist',
+          worksFor: {
+            '@type': 'Organization',
+            name: 'Shopredpanda'
+          },
+          description: 'A UK-based artist specializing in manga, anime, digital art, and character illustration.'
+        }
+
+
   return (
+  <section>
+      {/* Add JSON-LD to your page */}
+      <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
     <main className="relative min-h-screen">
       <script       type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
@@ -109,5 +116,6 @@ export default function Home() {
      <Srfooter />
     </div>
     </main>
-  );
+  </section>
+  )
 }

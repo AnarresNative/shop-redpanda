@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /api/
+Disallow: /_next/
+Disallow: /private-page/
+Allow: /
+
+Sitemap: https://yourdomain.com/sitemap.xml

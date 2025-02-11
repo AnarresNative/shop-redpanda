@@ -3,8 +3,9 @@ import Srfooter from "../components/footer";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "ShopRedpanda",
-  description: "ShopRedpanda is the art portfolio and display for the artist Redpanda Art. Drawing in various styles across Manga and Anime, Redpanda Art is a UK-based artist who specialises in digital art and character illustration.",
+  title: "ShopRedpanda | Manga & Anime Art",
+  description:
+    "Discover the vibrant world of ShopRedpanda—a UK-based digital art studio specializing in manga, anime, and character illustration.",
   keywords: [
     "Redpanda Art",
     "ShopRedpanda",
@@ -12,16 +13,57 @@ export const metadata: Metadata = {
     "Anime",
     "Digital Art",
     "Character Illustration",
-    "UK Artist",
-    "Celine Cresswell",
-    "Draw Manga Faces, Heads and Hairstyles: The Workbook",
-    "Beginner's Guide to Drawing Manga Bodies and Poses"
-  ]
+    "UK Artist"
+  ],
+  openGraph: {
+    title: "ShopRedpanda | Manga & Anime Art",
+    description:
+      "Explore the portfolio and creative journey of ShopRedpanda, a UK-based artist specializing in digital art.",
+    url: "https://shopredpanda.co.uk",
+    siteName: "ShopRedpanda",
+    images: [
+      {
+        url: "https://shopredpanda.co.uk/images/Waterfall.jpg",
+        width: 1200,
+        height: 630,
+        alt: "ShopRedpanda - Manga & Anime Art"
+      }
+    ],
+    locale: "en_UK",
+    type: "website"
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "ShopRedpanda | Manga & Anime Art",
+    description:
+      "Discover ShopRedpanda: a UK-based digital art studio specializing in manga, anime, and character illustration.",
+    site: "@YourTwitterHandle",
+    images: "https://shopredpanda.co.uk/images/Waterfall.jpg"
+  }
 };
+
+const jsonLd = {
+'@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Redpanda Art',
+    url: 'https://shopredpanda.com',
+    sameAs: [
+      'https://www.instagram.com/redpandaart',
+      'https://twitter.com/redpandaart'
+    ],
+    jobTitle: 'Digital Artist',
+    worksFor: {
+      '@type': 'Organization',
+      name: 'Shopredpanda'
+    },
+    description: 'A UK-based artist specializing in manga, anime, digital art, and character illustration.'
+  }
 
 export default function Home() {
   return (
     <main className="relative min-h-screen">
+      <script       type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       {/* Scrolling background container */}
       <div
         className="

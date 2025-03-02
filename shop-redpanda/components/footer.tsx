@@ -12,7 +12,9 @@ export default function Srfooter() {
               >
               <Image src="/images/Etsy.png" alt="Etsy Logo" className="w-6 h-6 transition-opacity duration-100 hover:opacity-60" width={500} height={500}/>
             </a>
+            <p className="hidden sm:block">
             shopredpandaillustrations@gmail.com
+            </p>       
     </footer>
     );
   }

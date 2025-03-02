@@ -39,11 +39,16 @@ export default async function PostPage(props: PageProps) {
 
   return (
     <article style={{ padding: '1rem' }}>
-      <h1>{post.title}</h1>
-      <p>
-        <small>{new Date(post.date).toLocaleDateString()}</small>
-      </p>
-      <div dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
+      <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+        <h1 className="text-4xl font-bold mb-6 text-brand-warm-600/100 relative z-2">{post.title}</h1>
+        <p>
+        {new Date(post.date).toLocaleDateString()}
+        </p>
+        <div
+        dangerouslySetInnerHTML={{ __html: post.contentHtml }}
+        style={{ lineHeight: '1.6', whiteSpace: 'pre-line' }}
+        />
+      </div>
     </article>
   );
 }

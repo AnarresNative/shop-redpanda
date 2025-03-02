@@ -43,7 +43,7 @@ export default function ArtworkGallery({ artworks }: ArtworkGalleryProps) {
             <Image
               src={featured.imageUrl}
               alt={featured.title}
-              className="object-cover w-auto"
+              className="object-cover w-auto max-h-[75vh]"
               width={500}
               height={500}
             />

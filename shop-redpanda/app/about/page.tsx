@@ -8,9 +8,9 @@ import Link from 'next/link';
 const Post = () => {
   return (
     <div>
+      <Navbar />
       <Background_text background_text={"About Me"} />
       <div className="max-w-6xl mx-auto p-6 bg-black/10">
-        <Navbar />
         <h1 className="text-9xl font-bold mb-6 text-brand-warm-600/100 relative z-2">Redpanda Art</h1>
         <p className="text-brand-beige-700 mb-6">Celine Cresswell • 04-Feb-2025</p>
         <div className="prose space-y-4">

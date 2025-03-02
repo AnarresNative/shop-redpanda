@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Background_text from '@/components/background_text';
 import Srfooter from '@/components/footer';
+import Navbar from '@/components/navbar';
 
 async function getPosts() {
   const postsDirectory = path.join(process.cwd(), 'posts');
@@ -40,6 +41,7 @@ export default async function BlogPage() {
 
   return (
     <div>
+      <Navbar />
     <div style={{ padding: '1rem' }}>
       <Background_text background_text="Blog" />
       <h1
